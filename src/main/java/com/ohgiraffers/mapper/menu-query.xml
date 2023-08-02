@@ -3,7 +3,7 @@
 <properties>
     <entry key="selectMenu">
         SELECT M.* FROM TBL_MENU M
-        WHERE M.MENU_NAME LIKE CONCAT(?, '%')
+        WHERE M.CATEGORY_CODE = ?
     </entry>
 
     <entry key="insertMenu">

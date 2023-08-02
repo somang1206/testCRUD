@@ -1,5 +1,7 @@
 package com.ohgiraffers.CRUD.insert;
 
+import com.ohgiraffers.model.dto.MenuDTO;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,30 +20,44 @@ public class Insert {
         PreparedStatement pstmt = null;
         int result = 0;
 
+
+
         Scanner sc = new Scanner(System.in);
-        System.out.println("조회할 상품을 입력하세요");
-        String meName = sc.nextLine();
+
+
+        System.out.print("추가할 상품을 입력하세요");
+        String menuName = sc.nextLine();
+
+        System.out.print("가격을 설정해주세요");
+        int menuPrice = Integer.parseInt(sc.nextLine());
+
+        System.out.print("카테고리의 코드를 입력해주세요");
+        int categoryCode = Integer.parseInt(sc.nextLine());
+
+        System.out.print("주문가능여부");
+        String orderableStatus = sc.nextLine();
+
         Properties prop = new Properties();
 
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/mapper/menu-query.xml"));
             String query = prop.getProperty("insertMenu");
 
-            try {
                 pstmt = con.prepareStatement(query);
-                pstmt.setString(1, "소곱창");
-                pstmt.setInt(2, 21000);
-                pstmt.setInt(3, 1);
-                pstmt.setString(4, "Y");
+
+                MenuDTO menuDTO = new MenuDTO(menuName, menuPrice, categoryCode, orderableStatus);
+
+                pstmt.setString(1, menuDTO.getMenuName());
+                pstmt.setInt(2, menuDTO.getMenuPrice());
+                pstmt.setInt(3, menuDTO.getCategoryCode());
+                pstmt.setString(4, menuDTO.getOrderableStatus());
 
                 System.out.println("query: " + query);
 
                 result = pstmt.executeUpdate();
-
-
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
+
 
         } catch (IOException e) {
             e.printStackTrace();

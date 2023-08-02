@@ -2,29 +2,21 @@ package com.ohgiraffers.model.dto;
 
 public class MenuDTO implements java.io.Serializable{
 
-    private int menuCode;
+
     private  String menuName;
     private int menuPrice;
-    private String orderableStatus;
     private int categoryCode;
+    private String orderableStatus;
+
 
     public MenuDTO() {
     }
 
-    public MenuDTO(int menuCode, String menuName, int menuPrice, String orderableStatus, int categoryCode) {
-        this.menuCode = menuCode;
+    public MenuDTO(String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuName = menuName;
         this.menuPrice = menuPrice;
         this.orderableStatus = orderableStatus;
         this.categoryCode = categoryCode;
-    }
-
-    public int getMenuCode() {
-        return menuCode;
-    }
-
-    public void setMenuCode(int menuCode) {
-        this.menuCode = menuCode;
     }
 
     public String getMenuName() {
@@ -62,8 +54,7 @@ public class MenuDTO implements java.io.Serializable{
     @Override
     public String toString() {
         return "MenuDTO{" +
-                "menuCode=" + menuCode +
-                ", menuName='" + menuName + '\'' +
+                "menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +
                 ", orderableStatus='" + orderableStatus + '\'' +
                 ", categoryCode=" + categoryCode +
