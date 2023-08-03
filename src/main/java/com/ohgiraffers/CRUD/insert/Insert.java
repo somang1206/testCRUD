@@ -24,6 +24,8 @@ public class Insert {
 
         Scanner sc = new Scanner(System.in);
 
+        System.out.print("추가할 상품의 코드를 입력하세요");
+        int menuCode = Integer.parseInt(sc.nextLine());
 
         System.out.print("추가할 상품을 입력하세요");
         String menuName = sc.nextLine();
@@ -31,11 +33,12 @@ public class Insert {
         System.out.print("가격을 설정해주세요");
         int menuPrice = Integer.parseInt(sc.nextLine());
 
+        System.out.print("주문가능여부");
+        String orderableStatus = sc.nextLine();
+
         System.out.print("카테고리의 코드를 입력해주세요");
         int categoryCode = Integer.parseInt(sc.nextLine());
 
-        System.out.print("주문가능여부");
-        String orderableStatus = sc.nextLine();
 
         Properties prop = new Properties();
 
@@ -45,12 +48,13 @@ public class Insert {
 
                 pstmt = con.prepareStatement(query);
 
-                MenuDTO menuDTO = new MenuDTO(menuName, menuPrice, categoryCode, orderableStatus);
+                MenuDTO menuDTO = new MenuDTO(menuCode, menuName, menuPrice, orderableStatus, categoryCode);
 
-                pstmt.setString(1, menuDTO.getMenuName());
-                pstmt.setInt(2, menuDTO.getMenuPrice());
-                pstmt.setInt(3, menuDTO.getCategoryCode());
-                pstmt.setString(4, menuDTO.getOrderableStatus());
+                pstmt.setInt(1, menuDTO.getMenuCode());
+                pstmt.setString(2, menuDTO.getMenuName());
+                pstmt.setInt(3, menuDTO.getMenuPrice());
+                pstmt.setInt(4, menuDTO.getCategoryCode());
+                pstmt.setString(5, menuDTO.getOrderableStatus());
 
                 System.out.println("query: " + query);
 

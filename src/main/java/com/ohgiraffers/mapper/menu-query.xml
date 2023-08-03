@@ -8,13 +8,15 @@
 
     <entry key="insertMenu">
         INSERT INTO TBL_MENU (
-                        MENU_NAME
+                        MENU_CODE
+                        ,MENU_NAME
                         ,MENU_PRICE
                         ,CATEGORY_CODE
                         ,ORDERABLE_STATUS
                         )
 
         VALUES (?
+                ,?
                 ,?
                 ,?
                 ,?
@@ -25,6 +27,7 @@
         UPDATE TBL_MENU
         SET MENU_NAME = ?
             ,MENU_PRICE = ?
+            ,ORDERABLE_STATUS = ?
             ,CATEGORY_CODE = ?
         WHERE MENU_CODE = ?
     </entry>

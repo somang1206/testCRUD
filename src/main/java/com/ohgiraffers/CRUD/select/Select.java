@@ -46,12 +46,13 @@ public class Select {
                 ArrayList<MenuDTO> dtoList = new ArrayList<MenuDTO>();
                 while (rset.next()) {
 
+                    int meCode = rset.getInt("MENU_CODE");
                     String name = rset.getString("MENU_NAME");
                     int price = rset.getInt("MENU_PRICE");
                     String orderable = rset.getString("ORDERABLE_STATUS");
                     int category = rset.getInt("CATEGORY_CODE");
 
-                    MenuDTO dto = new MenuDTO( name, price, category, orderable);
+                    MenuDTO dto = new MenuDTO(meCode, name, price, orderable, category);
                     dtoList.add(dto);
 
                 }

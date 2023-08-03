@@ -19,7 +19,7 @@ public class Delete {
         Properties prop = new Properties();
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("검색할 상품명을 입력하세요");
+        System.out.println("검색할 메뉴코드를 입력하세요");
         String meName = sc.nextLine();
 
         try {
